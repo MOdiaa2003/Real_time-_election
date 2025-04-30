@@ -1,10 +1,8 @@
 # Real-Time Election Analytics
 
-This repository contains a full end-to-end real-time election analytics pipeline. It includes data generators, stream processors, dashboards, and infrastructure orchestration via Docker Compose.
-
----
 
 ## 🌟 Project Overview
+![Architecture Diagram](https://raw.githubusercontent.com/MOdiaa2003/Real_time-_election/e1f377aaed177694565b8479e22ea51d2546fb5f/images/arch.drawio%20(1).png)
 
 A simulation of an election system that generates voter and candidate data, processes votes in real time, and visualizes key metrics. The pipeline leverages:
 
@@ -21,8 +19,8 @@ A simulation of an election system that generates voter and candidate data, proc
 
 ```text
 ┌────────────┐       ┌─────────────┐       ┌─────────────┐       ┌─────────────┐
-│ Generator  │───▶   │  Kafka      │───▶   │  Spark      │───▶   │  Kafka      │
-│ Scripts    │       │  (topics)   │       │ Streaming   │       │  (agg-topics)│
+│ Generator  │───▶   │  Kafka      │───▶   │  Spark      │───▶   │  Kafka    │
+│ Scripts    │       │  (topics)   │       │ Streaming   │       │ (agg-topics)│
 └────────────┘       └─────────────┘       └────┬────────┘       └────┬────────┘
                                                │                     │
                                                ▼                     ▼
@@ -88,7 +86,7 @@ A simulation of an election system that generates voter and candidate data, proc
 ### 1. `main.py`
 **Non-Technical:** Generates fake voter and candidate profiles, stores them in PostgreSQL, and streams them into Kafka topics (`voters_topic`, `candidates_topic`).
 
-**Technical:** Uses RandomUser API to fetch 5,000 UK users per batch, assigns `education_level` and `party`, creates PostgreSQL tables (`voters`, `candidates`), inserts records via `psycopg2`, and produces messages with Confluent Kafka `SerializingProducer`.
+**Technical:** Uses RandomUser API to fetch 25,000 UK users per batch, assigns `education_level` and `party`, creates PostgreSQL tables (`voters`, `candidates`), inserts records via `psycopg2`, and produces messages with Confluent Kafka `SerializingProducer`.
 
 ---
 
