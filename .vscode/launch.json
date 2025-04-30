@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Streamlit: Debug",
+        "type": "python",
+        "request": "launch",
+        "module": "streamlit",
+        "args": [
+          "run",
+          "${workspaceFolder}/streamlit-app.py"
+        ],
+        "console": "integratedTerminal"
+      }
+    ]
+  }
+  
